@@ -30,18 +30,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //what to do when user clicks an item in the app bar
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId())
+        {
+            //go to login page
+            case R.id.loginButtonHome:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
-    //go to login page
-    public void goToLoginPage(View view)
-    {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+
 
 
 }

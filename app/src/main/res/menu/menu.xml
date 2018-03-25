@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/settings"
-        android:title="@string/settings"
+        android:id="@+id/loginButtonHome"
+        android:title="@string/login"
+
         app:showAsAction="never"/>
 </menu>
