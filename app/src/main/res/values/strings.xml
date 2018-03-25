@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SuzukiApp</string>
+    <string name="loginButtonHome">Login</string>
+    <string name="settings">Settings</string>
+
+
 </resources>
