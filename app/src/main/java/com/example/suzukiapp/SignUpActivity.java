@@ -152,7 +152,7 @@ public class SignUpActivity extends AppCompatActivity
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                 {
-                    //write text data to database if image upload was successful
+                    //write text data to database if image upload is successful
                     databaseReference.push().setValue(user);
                     Toast.makeText(SignUpActivity.this, "Account created successfully!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.INVISIBLE);
@@ -169,5 +169,24 @@ public class SignUpActivity extends AppCompatActivity
         }
 
 
+
+
+
+        //write text data to database
+        /*databaseReference.push().setValue(user).addOnCompleteListener(new OnCompleteListener<Void>()
+        {
+            @Override
+            public void onComplete(@NonNull Task<Void> task)
+            {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(SignUpActivity.this, "Account created successfully!", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(SignUpActivity.this, "Failed to create account!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });*/
     }
 }

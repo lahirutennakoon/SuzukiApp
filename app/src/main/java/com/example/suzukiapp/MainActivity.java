@@ -7,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.suzukiapp.model.Car;
 import com.example.suzukiapp.model.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -17,12 +20,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
     //reference to firebase database (for textual data)
     private DatabaseReference databaseReference;
 
     private ListView listView;
+
+    private ArrayList<String> cars = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,19 +45,29 @@ public class MainActivity extends AppCompatActivity
         //get an instance of DatabaseReference to read from table "Car" in db
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Car");
 
+        listView = (ListView) findViewById(R.id.carListView);
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cars);
+
+        //joining the array adapter to the listview
+        listView.setAdapter(arrayAdapter);
+
+        //display the values from firebase database in the listview
         databaseReference.addChildEventListener(new ChildEventListener()
         {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s)
             {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
-                {
-                    User user = (User) dataSnapshot.getValue(User.class);
-                    String fname = user.getFirstName();
+                Car car = (Car) dataSnapshot.getValue(Car.class);
+                String model = car.getModel();
 
-                    System.out.println("user1" + fname);
+                //add value to arraylist
+                cars.add(model);
 
-                }
+                arrayAdapter.notifyDataSetChanged();
+
+                System.out.println("Car model" + model);
+
             }
 
             @Override
@@ -75,6 +92,18 @@ public class MainActivity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError)
             {
 
+            }
+        });
+
+        //onclick event for a list item
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                Intent intent = new Intent(MainActivity.this, CarDetailsActivity.class);
+                intent.putExtra("model", ((TextView)view.findViewById(android.R.id.text1)).getText());
+                startActivity(intent);
             }
         });
     }

@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- login activity (a child activity) -->
         <activity
             android:name=".LoginActivity"
@@ -31,10 +30,19 @@
                 android:value=".MainActivity" />
         </activity>
 
-
-        <!--sign up activity (a child activity) -->
+        <!-- sign up activity (a child activity) -->
         <activity
             android:name=".SignUpActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".CarDetailsActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
