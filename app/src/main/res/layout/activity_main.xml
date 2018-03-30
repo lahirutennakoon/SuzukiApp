@@ -7,11 +7,19 @@
     tools:context="com.example.suzukiapp.MainActivity">
 
     <include
-        layout="@layout/app_bar"
-        android:id="@+id/app_bar"/>
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
 
-
-
+    <ListView
+        android:id="@+id/carListView"
+        android:layout_width="match_parent"
+        android:layout_height="505dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>
