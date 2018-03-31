@@ -33,7 +33,7 @@
         <!-- sign up activity (a child activity) -->
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".LoginActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data

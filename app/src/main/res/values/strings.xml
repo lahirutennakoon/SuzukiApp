@@ -10,6 +10,7 @@
     <string name="phone">Phone</string>
     <string name="user_image">User Image</string>
     <string name="select_image">Select Image</string>
+    <string name="car_image">Car Image</string>
 
 
 </resources>

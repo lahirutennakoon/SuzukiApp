@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,6 +56,17 @@ public class SignUpActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        //set app bar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.login_app_bar);
+        setSupportActionBar(toolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar actionBar = getSupportActionBar();
+
+        // Enable the Up button
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);

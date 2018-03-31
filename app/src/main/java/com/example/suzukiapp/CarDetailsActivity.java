@@ -4,30 +4,37 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.suzukiapp.model.Car;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.io.IOException;
 
 public class CarDetailsActivity extends AppCompatActivity
 {
     //reference to firebase database (for textual data)
     private DatabaseReference databaseReference;
 
-    //reference to firebase storage for images
-    private FirebaseStorage firebaseStorage;
-
+    //reference to firebase storage (for images)
+    private FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     private StorageReference storageReference;
 
     private TextView textView;
+
+    private ImageView imageView;
 
 
     @Override
@@ -36,7 +43,7 @@ public class CarDetailsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
 
-        //set app bar for login page
+        //set app bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.login_app_bar);
         setSupportActionBar(toolbar);
 
@@ -139,6 +146,14 @@ public class CarDetailsActivity extends AppCompatActivity
         //download car image
         storageReference = firebaseStorage.getReference().child("Car/" + modelFromMainActivity + ".jpg");
 
-        File file = File.createTempFile()
+        imageView = (ImageView) findViewById(R.id.carImageView);
+
+        // Load the image using Glide
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(storageReference)
+                .into(imageView);
+
+
     }
 }

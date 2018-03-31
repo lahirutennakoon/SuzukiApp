@@ -14,9 +14,11 @@
         android:id="@+id/model"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="216dp" />
+        app:layout_constraintBottom_toTopOf="@+id/doorCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carImageView" />
 
     <TextView
         android:id="@+id/doorCount"
@@ -99,5 +101,17 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price" />
+
+    <ImageView
+        android:id="@+id/carImageView"
+        android:layout_width="136dp"
+        android:layout_height="116dp"
+        android:contentDescription="@string/car_image"
+        app:layout_constraintBottom_toTopOf="@+id/model"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_app_bar"
+        app:srcCompat="@drawable/ic_car" />
 
 </android.support.constraint.ConstraintLayout>
