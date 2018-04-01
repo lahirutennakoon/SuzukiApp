@@ -144,7 +144,7 @@ public class CarDetailsActivity extends AppCompatActivity
         });
 
         //download car image
-        storageReference = firebaseStorage.getReference().child("Car/" + modelFromMainActivity + ".jpg");
+        storageReference = firebaseStorage.getReference().child("Car/" + modelFromMainActivity);
 
         imageView = (ImageView) findViewById(R.id.carImageView);
 

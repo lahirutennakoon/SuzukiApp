@@ -50,6 +50,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".AddCarActivity" />
+        <activity android:name=".AdminPanelActivity" />
+        <activity android:name=".ViewCarsAdmin"></activity>
     </application>
 
 </manifest>

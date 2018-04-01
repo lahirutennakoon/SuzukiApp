@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class Car
 {
+    private String id;
     private String image;
     private String model;
     private int doorCount;
@@ -20,6 +21,38 @@ public class Car
     private String features;
 
     //getters and setters
+
+    public Car()
+    {
+    }
+    public Car(String id, Double priceDouble)
+    {
+        this.id = id;
+        this.price = price;
+    }
+
+    public Car(String id, String image, String model, int doorCount, String colorsAvailable, String fuelType, double engineCapacity, String transmission, String releaseYear, double price, String features)
+    {
+        this.id = id;
+        this.image = image;
+        this.model = model;
+        this.doorCount = doorCount;
+        this.colorsAvailable = colorsAvailable;
+        this.fuelType = fuelType;
+        this.engineCapacity = engineCapacity;
+        this.transmission = transmission;
+        this.releaseYear = releaseYear;
+        this.price = price;
+        this.features = features;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getImage()
     {

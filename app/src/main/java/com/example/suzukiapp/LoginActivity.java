@@ -33,4 +33,10 @@ public class LoginActivity extends AppCompatActivity
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
+
+    public void goToAdminLoginActivity(View view)
+    {
+        Intent intent = new Intent(this, AdminLoginActivity.class);
+        startActivity(intent);
+    }
 }

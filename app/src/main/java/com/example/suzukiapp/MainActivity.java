@@ -59,7 +59,11 @@ public class MainActivity extends AppCompatActivity
             public void onChildAdded(DataSnapshot dataSnapshot, String s)
             {
                 Car car = (Car) dataSnapshot.getValue(Car.class);
-                String model = car.getModel();
+                String model = null;
+                if (car != null)
+                {
+                    model = car.getModel();
+                }
 
                 //add value to arraylist
                 cars.add(model);
